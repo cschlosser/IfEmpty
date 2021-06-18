@@ -29,6 +29,12 @@ jobs:
         with:
           command: check
 
+      - name: Run deploy dry run
+        uses: actions-rs/cargo@v1
+        with:
+          command: publish
+          args: --dry-run
+
   test:
     name: Test
     runs-on: ${{ matrix.os }}
