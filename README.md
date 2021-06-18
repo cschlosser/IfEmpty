@@ -56,4 +56,7 @@ impl IfEmpty for Foo {
 
 Once [#1](https://github.com/cschlosser/IfEmpty/issues/1) is implemented you can simply use `derive`.
 
+## Provided types
+
+The crate provides this functionality for `String` and `&str`.
 
