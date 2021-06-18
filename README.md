@@ -13,21 +13,21 @@ You now have the option to wrap this special function call or write something al
 
 ```rust
 let foo = {
-        let b = bar();
-        if b.is_empty() {
-            Bar {
-                // set the default values for your context here
-            }
-        } else {
-            b
+    let b = bar();
+    if b.is_empty() {
+        Bar {
+            // set the default values for your context here
         }
-    };
+    } else {
+        b
+    }
+};
 ```
 
 Using this crate you can reduce this down to:
 
 ```rust
-let foo = bar().if_empty(Bar { /* ... */ }); 
+let foo = bar().if_empty(Bar { /* ... */ });
 ```
 
 ## Implementing this for your own type
