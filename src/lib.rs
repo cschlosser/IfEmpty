@@ -1,8 +1,6 @@
-/*
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 pub trait IfEmpty {
     fn if_empty(self, val: Self) -> Self;
@@ -34,7 +32,7 @@ impl IfEmpty for String {
 
 #[cfg(test)]
 mod tests {
-    use crate::{ IfEmpty, IfEmptyBorrowed };
+    use crate::{IfEmpty, IfEmptyBorrowed};
 
     #[test]
     fn string() {
@@ -78,12 +76,24 @@ mod tests {
             }
         }
 
-        let f = Fake { value: false };
-        assert!(f.if_empty(Fake {value: true}).value);
+        let f = Fake {
+            value: false,
+        };
+        assert!(
+            f.if_empty(Fake {
+                value: true
+            })
+            .value
+        );
 
-        let f = Fake { value: true };
-        assert!(f.if_empty(Fake {value: false}).value);
-
+        let f = Fake {
+            value: true,
+        };
+        assert!(
+            f.if_empty(Fake {
+                value: false
+            })
+            .value
+        );
     }
 }
-
