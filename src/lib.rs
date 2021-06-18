@@ -16,8 +16,15 @@
 //!
 //! # Examples
 //!
-//! Converting
 //! ```
+//! # struct Bar {}
+//! # impl Bar {
+//! #     fn is_empty(&self) -> bool { true }
+//! # }
+//! # fn bar() -> Bar {
+//! #     Bar {}
+//! # }
+//! //  Converting
 //! let foo = {
 //!    let b = bar();
 //!    if b.is_empty() {
@@ -28,10 +35,19 @@
 //!        b
 //!    }
 //! };
-//! ```
-//! into
+//! // into
+//! use if_empty::IfEmpty;
+//! impl IfEmpty for Bar {
+//!      fn if_empty(self, value: Self) -> Self {
+//!          // implement
+//! #         if self.is_empty() {
+//! #             value
+//! #         } else {
+//! #             self
+//! #         }
+//!      }
+//! }
 //!
-//! ```
 //! let foo = bar().if_empty(Bar { /* ... */ });
 //! ```
 //!
@@ -41,8 +57,14 @@
 //! do more elaborate checks.
 //!
 //! ```
+//! use if_empty::IfEmpty;
+//!
 //! struct Foo {
 //!    val: bool,
+//! }
+//!
+//! impl Foo {
+//!     fn is_empty(&self) -> bool { !val }
 //! }
 //!
 //! impl IfEmpty for Foo {
