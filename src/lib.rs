@@ -4,7 +4,8 @@
 
 //! For use with defensive programming where context specific defaults are needed.
 //!
-//! While using an [`Option`] is preferrably in most circumstances there are situations where a function call doesn't return an [`Option`] and the [`Default`] of a type isn't helpful either.
+//! While using an [`Option`] is preferrably in most circumstances there are situations where a function call doesn't return an
+//! [`Option`] and the [`Default`] of a type isn't helpful either.
 //!
 //! [`Option`]: https://doc.rust-lang.org/std/option/enum.Option.html
 //! [`Default`]: https://doc.rust-lang.org/std/default/trait.Default.html
@@ -17,7 +18,7 @@
 //!
 //! Converting
 //! ```
-//!let foo = {
+//! let foo = {
 //!    let b = bar();
 //!    if b.is_empty() {
 //!        Bar {
@@ -26,7 +27,7 @@
 //!    } else {
 //!        b
 //!    }
-//!};
+//! };
 //! ```
 //! into
 //!
@@ -40,11 +41,11 @@
 //! do more elaborate checks.
 //!
 //! ```
-//!struct Foo {
+//! struct Foo {
 //!    val: bool,
-//!}
+//! }
 //!
-//!impl IfEmpty for Foo {
+//! impl IfEmpty for Foo {
 //!    fn if_empty(self, value: Foo) -> Foo {
 //!        if self.is_empty() {
 //!            value
@@ -52,27 +53,18 @@
 //!            self
 //!        }
 //!    }
-//!}
-//!```
-//!
+//! }
+//! ```
 
-///
 /// For checking IfEmpty on value semantics
-///
 pub trait IfEmpty {
-    ///
     /// Returns `val` if the `self` is empty
-    ///
     fn if_empty(self, val: Self) -> Self;
 }
 
-///
 /// For checking IfEmpty on borrowed objects
-///
 pub trait IfEmptyBorrowed {
-    ///
     /// Return `val` if `self` is empty
-    ///
     fn if_empty<'a>(&'a self, val: &'a Self) -> &'a Self;
 }
 
