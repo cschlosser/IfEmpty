@@ -58,5 +58,5 @@ Once [#1](https://github.com/cschlosser/IfEmpty/issues/1) is implemented you can
 
 ## Provided types
 
-The crate provides this functionality for `String` and `&str`.
+The crate provides this functionality for `String`, `OsString`, `&str` and `&OsStr`.
 
