@@ -9,5 +9,6 @@ homepage = "https://github.com/cschlosser/IfEmpty"
 repository = "https://github.com/cschlosser/IfEmpty"
 readme = "README.md"
 keywords = ["empty", "is_empty"]
+documentation = "https://docs.rs/if_empty/0.1.0/if_empty/"
 
 [dependencies]
