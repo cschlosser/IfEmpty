@@ -64,7 +64,7 @@
 //! }
 //!
 //! impl Foo {
-//!     fn is_empty(&self) -> bool { !val }
+//!     fn is_empty(&self) -> bool { !self.val }
 //! }
 //!
 //! impl IfEmpty for Foo {
