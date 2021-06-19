@@ -29,6 +29,11 @@ jobs:
         with:
           command: check
 
+      - name: Run doc
+        uses: actions-rs/cargo@v1
+        with:
+          command: doc
+
       - name: Run deploy dry run
         uses: actions-rs/cargo@v1
         with:
