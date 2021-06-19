@@ -148,8 +148,9 @@ impl IfEmpty for std::ffi::OsString {
 
 #[cfg(test)]
 mod tests {
-    use crate::{IfEmpty, IfEmptyBorrowed};
     use std::ffi::{OsStr, OsString};
+
+    use crate::{IfEmpty, IfEmptyBorrowed};
 
     #[test]
     fn string() {
@@ -188,7 +189,10 @@ mod tests {
 
         let string = OsString::from("not empty");
         assert!(!string.is_empty());
-        assert_eq!(OsString::from("not empty"), string.if_empty(OsString::from("should not be returned")));
+        assert_eq!(
+            OsString::from("not empty"),
+            string.if_empty(OsString::from("should not be returned"))
+        );
     }
     #[test]
     fn os_str() {
