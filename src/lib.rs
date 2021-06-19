@@ -116,8 +116,40 @@ impl IfEmpty for String {
     }
 }
 
+/// [`OsStr`]: https://doc.rust-lang.org/std/ffi/struct.OsStr.html
+/// Implementation of `IfEmptyBorrowed` for [`OsStr`]
+impl IfEmptyBorrowed for std::ffi::OsStr {
+    /// [`OsStr::is_empty()`]: https://doc.rust-lang.org/std/ffi/struct.OsStr.html#method.is_empty
+    /// Returns `input` if [`OsStr::is_empty()`] returns true.
+    /// Otherwise `self` is returned.
+    fn if_empty<'a>(&'a self, input: &'a Self) -> &'a Self {
+        if self.is_empty() {
+            input
+        } else {
+            self
+        }
+    }
+}
+
+/// [`OsString`]: https://doc.rust-lang.org/std/ffi/struct.OsString.html
+/// Implementation of `IfEmpty` for [`OsString`]
+impl IfEmpty for std::ffi::OsString {
+    /// [`OsString::is_empty()`]: https://doc.rust-lang.org/std/ffi/struct.OsString.html#method.is_empty
+    /// Returns `input` if [`OsString::is_empty()`] returns true.
+    /// Otherwise `self` is returned.
+    fn if_empty(self, input: Self) -> Self {
+        if self.is_empty() {
+            input
+        } else {
+            self
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
+    use std::ffi::{OsStr, OsString};
+
     use crate::{IfEmpty, IfEmptyBorrowed};
 
     #[test]
@@ -145,6 +177,34 @@ mod tests {
         let string: &str = "not empty";
         assert!(!string.is_empty());
         assert_eq!("not empty", string.if_empty("should not be returned"));
+    }
+    #[test]
+    fn os_string() {
+        let string = OsString::default();
+        assert!(string.is_empty());
+        let replacement = OsString::from("text");
+        let replaced = string.if_empty(replacement.clone());
+        assert!(!replaced.is_empty());
+        assert_eq!(replacement, replaced);
+
+        let string = OsString::from("not empty");
+        assert!(!string.is_empty());
+        assert_eq!(
+            OsString::from("not empty"),
+            string.if_empty(OsString::from("should not be returned"))
+        );
+    }
+    #[test]
+    fn os_str() {
+        let string = OsStr::new("");
+        assert!(string.is_empty());
+        let replacement = OsStr::new("text");
+        let replaced = string.if_empty(replacement);
+        assert!(!replaced.is_empty());
+        assert_eq!(replacement, replaced);
+
+        let string = OsStr::new("not empty");
+        assert!(!string.is_empty());
     }
     #[test]
     fn custom() {
