@@ -4,7 +4,9 @@ use syn::{parse_macro_input, DeriveInput};
 
 #[proc_macro_derive(IfEmpty)]
 pub fn if_empty(input: TokenStream) -> TokenStream {
-    let DeriveInput { ident, .. } = parse_macro_input!(input);
+    let DeriveInput {
+        ident, ..
+    } = parse_macro_input!(input);
 
     let output = quote! {
         impl #ident {
