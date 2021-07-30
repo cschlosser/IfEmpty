@@ -7,7 +7,9 @@ struct Example {
 
 impl Example {
     fn new() -> Self {
-        Self { string: String::new() }
+        Self {
+            string: String::new(),
+        }
     }
 
     pub fn is_empty(&self) -> bool {

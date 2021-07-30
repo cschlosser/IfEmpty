@@ -244,4 +244,40 @@ mod tests {
             .value
         );
     }
+
+    #[test]
+    fn derive_macro() {
+        #[derive(IfEmpty)]
+        struct Example {
+            value: String,
+        }
+
+        impl Example {
+            fn is_empty(&self) -> bool {
+                self.value.is_empty()
+            }
+        }
+
+        let e = Example {
+            value: String::new(),
+        };
+        assert_eq!(
+            e.if_empty(Example {
+                value: "not empty".to_string(),
+            })
+            .value,
+            "not empty"
+        );
+
+        let e = Example {
+            value: "a string".to_string(),
+        };
+        assert_eq!(
+            e.if_empty(Example {
+                value: "not empty".to_string(),
+            })
+            .value,
+            "a string"
+        );
+    }
 }
