@@ -78,6 +78,8 @@
 //! }
 //! ```
 
+pub use if_empty_derive::IfEmpty;
+
 /// For checking IfEmpty on value semantics
 pub trait IfEmpty {
     /// Returns `val` if the `self` is empty
@@ -240,6 +242,42 @@ mod tests {
                 value: false
             })
             .value
+        );
+    }
+
+    #[test]
+    fn derive_macro() {
+        #[derive(IfEmpty)]
+        struct Example {
+            value: String,
+        }
+
+        impl Example {
+            fn is_empty(&self) -> bool {
+                self.value.is_empty()
+            }
+        }
+
+        let e = Example {
+            value: String::new(),
+        };
+        assert_eq!(
+            e.if_empty(Example {
+                value: "not empty".to_string(),
+            })
+            .value,
+            "not empty"
+        );
+
+        let e = Example {
+            value: "a string".to_string(),
+        };
+        assert_eq!(
+            e.if_empty(Example {
+                value: "not empty".to_string(),
+            })
+            .value,
+            "a string"
         );
     }
 }

@@ -1,6 +1,6 @@
 [package]
 name = "if_empty"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["Christoph Schlosser <christoph@linux.com>"]
 edition = "2018"
 license = "MPL-2.0"
@@ -12,3 +12,4 @@ keywords = ["empty", "is_empty"]
 documentation = "https://docs.rs/if_empty/0.2.0/if_empty/"
 
 [dependencies]
+if_empty_derive = { version = "0.1.0", path = "./derive_macro" }

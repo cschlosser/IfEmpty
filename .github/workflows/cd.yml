@@ -25,7 +25,15 @@ jobs:
         with:
           command: check
 
-      - name: Publish
+      - name: Publish derive macro
+        uses: actions-rs/cargo@v1
+        with:
+          command: publish
+          args: --manifest-path ./derive_macro/Cargo.toml
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_API_TOKEN }}
+
+      - name: Publish if_empty
         uses: actions-rs/cargo@v1
         with:
           command: publish
