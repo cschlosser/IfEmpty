@@ -5,20 +5,9 @@ struct Example {
     string: String,
 }
 
-impl Clone for Example {
-    fn clone(self: &Example) -> Self {
-        let e = Example {
-            string: self.string.clone(),
-        };
-        e
-    }
-}
-
 impl Example {
     fn new() -> Self {
-        Self {
-            string: String::new(),
-        }
+        Self { string: String::new() }
     }
 
     pub fn is_empty(&self) -> bool {
