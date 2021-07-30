@@ -54,7 +54,7 @@ impl IfEmpty for Foo {
 
 ```
 
-Once [#1](https://github.com/cschlosser/IfEmpty/issues/1) is implemented you can simply use `derive`.
+See [derive_macro](derive_macro) for how to use the `#[derive]` macro.
 
 ## Provided types
 
