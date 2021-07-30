@@ -224,10 +224,24 @@ mod tests {
             }
         }
 
-        let f = Fake { value: false };
-        assert!(f.if_empty(Fake { value: true }).value);
+        let f = Fake {
+            value: false,
+        };
+        assert!(
+            f.if_empty(Fake {
+                value: true
+            })
+            .value
+        );
 
-        let f = Fake { value: true };
-        assert!(f.if_empty(Fake { value: false }).value);
+        let f = Fake {
+            value: true,
+        };
+        assert!(
+            f.if_empty(Fake {
+                value: false
+            })
+            .value
+        );
     }
 }
