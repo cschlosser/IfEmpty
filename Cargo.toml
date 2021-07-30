@@ -12,3 +12,4 @@ keywords = ["empty", "is_empty"]
 documentation = "https://docs.rs/if_empty/0.2.0/if_empty/"
 
 [dependencies]
+derive_macro = { path = "derive_macro" }
