@@ -1,7 +1,14 @@
 [package]
-name = "derive_macro"
+name = "if_empty_derive"
 version = "0.1.0"
+authors = ["Christoph Schlosser <christoph@linux.com>"]
 edition = "2018"
+license = "MPL-2.0"
+description = "Proc macro to generate if_empty for types that have is_empty implemented"
+homepage = "https://github.com/cschlosser/IfEmpty/tree/master/derive_macro"
+repository = "https://github.com/cschlosser/IfEmpty"
+readme = "README.md"
+keywords = ["proc-macro", "is_empty", "if_empty"]
 
 [lib]
 proc-macro = true

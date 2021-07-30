@@ -34,7 +34,12 @@ jobs:
         with:
           command: doc
 
-      - name: Run deploy dry run
+      - name: Deploy derive_macro dry run
+        uses: actions-rs/cargo@v1
+        with:
+          command: publish
+          args: --dry-run --manifest-path ./derive_macro/Cargo.toml
+      - name: Deploy if_empty dry run
         uses: actions-rs/cargo@v1
         with:
           command: publish

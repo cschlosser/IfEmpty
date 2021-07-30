@@ -12,4 +12,4 @@ keywords = ["empty", "is_empty"]
 documentation = "https://docs.rs/if_empty/0.2.0/if_empty/"
 
 [dependencies]
-derive_macro = { path = "derive_macro" }
+if_empty_derive = { version = "0.1.0", path = "./derive_macro" }
