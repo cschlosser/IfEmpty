@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `derive` macro which automatically implements `if_empty` if the type has an `is_empty` function returning a `bool`
+
 ### Changed
 
 ### Removed
