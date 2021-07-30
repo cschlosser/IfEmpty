@@ -62,10 +62,15 @@ jobs:
           toolchain: stable
           override: true
 
-      - name: Run cargo test
+      - name: Test if_empty
         uses: actions-rs/cargo@v1
         with:
           command: test
+      - name: Test derive macro
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
+          args: --manifest-path ./derive_macro/Cargo.toml
 
   lint:
     name: Lint
